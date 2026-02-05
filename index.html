@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>10 cosas que amo de ti ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #FFFAFF, #fff1f5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #333;
+    }
+
+    .container {
+        background: pink;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        max-width: 400px;
+        text-align: center;
+    }
+
+    h1 {
+        color: #e63973;
+        margin-bottom: 20px;
+    }
+
+    .photo-container {
+        position: relative;
+        cursor: pointer;
+    }
+
+    .photo-container img {
+        width: 100%;
+        border-radius: 15px;
+        transition: transform 0.3s ease;
+    }
+
+    .photo-container:hover img {
+        transform: scale(1.03);
+    }
+
+    .hint {
+        font-size: 14px;
+        color: #777;
+        margin-top: 8px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+    }
+
+    li {
+        background: #ffe5ec;
+        margin: 10px 0;
+        padding: 12px;
+        border-radius: 10px;
+        opacity: 0;
+        transform: translateY(10px);
+        animation: fadeIn 0.5s forwards;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .heart {
+        font-size: 22px;
+        color: #e63973;
+    }
+	.photo-container img {
+    transition: opacity 0.4s ease, transform 0.3s ease;
+	}
+/* Fondo beis */
+body {
+    background-color: #f5f0e6;
+    overflow: hidden;
+}
+
+/* Contenedor de corazones */
+.hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Corazones */
+.heart {
+    position: absolute;
+    top: -20px;
+    color: #e63946;
+    font-size: 18px;
+    animation: fall linear infinite;
+    opacity: 0.8;
+}
+
+/* Animación de caída */
+@keyframes fall {
+    from {
+        transform: translateY(-10vh);
+    }
+    to {
+        transform: translateY(110vh);
+    }
+}
+
+/* Para que tu tarjeta esté encima */
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hearts"></div>
+<div class="container">
+    <h1>10 cosas que amo de ti ❤️</h1>
+
+    <div class="photo-container" onclick="mostrarSiguiente()">
+        <!-- CAMBIA la ruta de la imagen -->
+        <img id="foto" src="foto1.jpg" alt="Ella">
+    </div>
+    <div class="hint">Haz clic en la foto 💕</div>
+
+    <ul id="lista"></ul>
+</div>
+<script>
+const img = document.getElementById("foto");
+img.style.opacity = 0;
+
+setTimeout(() => {
+    img.src = fotos[indice];
+    img.style.opacity = 1;
+}, 200);
+
+
+    const cosas = [
+        "Tu sonrisa ilumina cualquier día",
+        "La forma en la que me miras",
+        "Tu manera de cuidarme",
+        "Tu risa, que es contagiosa",
+        "Lo buena persona que eres",
+        "Tu paciencia conmigo",
+        "Tu forma de querer sin condiciones",
+        "Cómo haces especial lo cotidiano",
+        "Que siempre estás cuando te necesito",
+        "Que eres el amor de mi vida ❤️",
+		"Tu Mochi siempre te amara"
+    ];
+
+    const fotos = [
+        "Machu.jpeg",
+        "vestido_rojo.jpeg",
+        "raw.jpeg",
+        "gorra.jpeg",
+        "pizza.jpeg",
+        "luces_1.jpeg",
+        "maquillaje.jpeg",
+        "momo.jpeg",
+        "columna.jpeg",
+        "desayuno.jpeg",
+		"cena_piso.jpeg",
+		"foto_yo.jpeg"
+    ];
+
+    let indice = 0;
+
+    function mostrarSiguiente() {
+        if (indice < cosas.length) {
+
+            // Mostrar texto
+            const li = document.createElement("li");
+            li.innerHTML = `💖 ${cosas[indice]}`;
+            document.getElementById("lista").appendChild(li);
+
+            // Cambiar foto con fade
+            const img = document.getElementById("foto");
+            img.style.opacity = 0;
+
+            setTimeout(() => {
+                img.src = fotos[indice];
+                img.style.opacity = 1;
+            }, 200);
+
+            indice++;
+        }
+    }
+	
+	function crearCorazon() {
+    const corazon = document.createElement("div");
+    corazon.classList.add("heart");
+    corazon.innerHTML = "❤️";
+
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.fontSize = (14 + Math.random() * 20) + "px";
+    corazon.style.animationDuration = (4 + Math.random() * 4) + "s";
+    corazon.style.opacity = Math.random();
+
+    document.querySelector(".hearts").appendChild(corazon);
+
+    setTimeout(() => {
+        corazon.remove();
+    }, 8000);
+}
+
+// Crear corazones continuamente
+setInterval(crearCorazon, 200);
+
+</script>
+
+
+</body>
+</html>
