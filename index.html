@@ -82,6 +82,22 @@
 	.photo-container img {
     transition: opacity 0.4s ease, transform 0.3s ease;
 	}
+	#btnMusica {
+    margin-top: 15px;
+    background: #e63973;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+#btnMusica:hover {
+    background: #d62860;
+}
+
 
 
 /* Contenedor de corazones */
@@ -125,7 +141,7 @@
 </head>
 
 <body>
-
+<button id="btnMusica" onclick="toggleMusica()">🔊 Música</button>
 <div class="hearts"></div>
 <div class="container">
     <h1>EL AMOR DE MI VIDA ❤️</h1>
@@ -138,7 +154,15 @@
 
     <ul id="lista"></ul>
 </div>
+
+<audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+</audio>
 <script>
+
+let musicaIniciada = false;
+const musica = document.getElementById("musica");
 const img = document.getElementById("foto");
 img.style.opacity = 0;
 
@@ -151,27 +175,27 @@ setTimeout(() => {
     const cosas = [
         "Mi rayito de Luz",
         "Tu mirada preciosa",
-        "Tu manera de cuidarme",
-        "Tu risa, que es contagiosa",
+        "Cada día es una aventura",
+        "Tu preciosa risa, que es contagiosa",
         "Lo buena persona que eres",
         "Tu paciencia conmigo",
-        "Tus mofletes preciosos",
-        "Cómo haces especial lo cotidiano",
+        "Tus mofletitos hermosos",
+        "Cómo lo haces todo especial",
         "Que siempre estás cuando te necesito",
 		"Tu Mochi siempre te amara",
-		"Que eres el amor de mi vida ❤️"
+		"Eres el amor de mi vida ❤️"
 		
     ];
 
     const fotos = [
+		"segovia.jpeg",
+		"amarillas.jpeg",
+		"raw.jpeg",
         "Machu.jpeg",
-        "vestido_rojo.jpeg",
-        "raw.jpeg",
-        "gorra.jpeg",
         "pizza.jpeg",
+		"momo.jpeg",
         "luces_1.jpeg",
-        "maquillaje.jpeg",
-        "momo.jpeg",
+        "preciosa.jpeg",
         "columna.jpeg",
         "desayuno.jpeg",
 		"foto_yo.jpeg",
@@ -181,6 +205,13 @@ setTimeout(() => {
     let indice = 0;
 
     function mostrarSiguiente() {
+	
+    // 🎵 Iniciar música al primer clic
+    if (!musicaIniciada) {
+        musica.volume = 0.4; // volumen suave
+        musica.play();
+        musicaIniciada = true;
+    }
         if (indice < cosas.length) {
 
             // Mostrar texto
@@ -226,6 +257,17 @@ setTimeout(() => {
 
 // Crear corazones continuamente
 setInterval(crearCorazon, 200);
+
+// Boton musica
+function toggleMusica() {
+    if (musica.paused) {
+        musica.play();
+        document.getElementById("btnMusica").textContent = "🔊 Música";
+    } else {
+        musica.pause();
+        document.getElementById("btnMusica").textContent = "🔇 Música";
+    }
+}
 
 </script>
 
