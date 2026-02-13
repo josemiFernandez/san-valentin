@@ -82,11 +82,7 @@
 	.photo-container img {
     transition: opacity 0.4s ease, transform 0.3s ease;
 	}
-/* Fondo beis */
-body {
-    background-color: #f5f0e6;
-    overflow: hidden;
-}
+
 
 /* Contenedor de corazones */
 .hearts {
@@ -132,13 +128,13 @@ body {
 
 <div class="hearts"></div>
 <div class="container">
-    <h1>10 cosas que amo de ti ❤️</h1>
+    <h1>EL AMOR DE MI VIDA ❤️</h1>
 
     <div class="photo-container" onclick="mostrarSiguiente()">
         <!-- CAMBIA la ruta de la imagen -->
         <img id="foto" src="foto1.jpg" alt="Ella">
     </div>
-    <div class="hint">Haz clic en la foto 💕</div>
+    <div class="hint">Palabritas mágicas 💕</div>
 
     <ul id="lista"></ul>
 </div>
@@ -153,17 +149,18 @@ setTimeout(() => {
 
 
     const cosas = [
-        "Tu sonrisa ilumina cualquier día",
-        "La forma en la que me miras",
+        "Mi rayito de Luz",
+        "Tu mirada preciosa",
         "Tu manera de cuidarme",
         "Tu risa, que es contagiosa",
         "Lo buena persona que eres",
         "Tu paciencia conmigo",
-        "Tu forma de querer sin condiciones",
+        "Tus mofletes preciosos",
         "Cómo haces especial lo cotidiano",
         "Que siempre estás cuando te necesito",
-        "Que eres el amor de mi vida ❤️",
-		"Tu Mochi siempre te amara"
+		"Tu Mochi siempre te amara",
+		"Que eres el amor de mi vida ❤️"
+		
     ];
 
     const fotos = [
@@ -177,8 +174,8 @@ setTimeout(() => {
         "momo.jpeg",
         "columna.jpeg",
         "desayuno.jpeg",
-		"cena_piso.jpeg",
-		"foto_yo.jpeg"
+		"foto_yo.jpeg",
+		"cena_piso.jpeg"
     ];
 
     let indice = 0;
@@ -191,6 +188,12 @@ setTimeout(() => {
             li.innerHTML = `💖 ${cosas[indice]}`;
             document.getElementById("lista").appendChild(li);
 
+
+			// 👇 Scroll automático suave
+			li.scrollIntoView({
+				behavior: "smooth",
+				block: "end"
+			});
             // Cambiar foto con fade
             const img = document.getElementById("foto");
             img.style.opacity = 0;
